@@ -1,0 +1,45 @@
+#include <iostream>
+#define MAX 1000
+using namespace std;
+
+int main()
+{
+    int i,j,n,a;
+    cin>>a;
+    int m[a][a];
+    for(i=0;i<a;i++)
+    {
+        for(j=0;j<a;j++)
+        {
+            m[i][j]=MAX;
+        }
+    }
+    cin>>n;
+    int nodo,nodo2,peso;
+    for(i=0;i<n;i++)
+    {
+        cin>>nodo>>nodo2>>peso;
+        m[nodo-1][nodo2-1]=peso;
+    }
+    int inicio,fin;
+    cin>>inicio>>fin;
+    nodo=inicio;
+    int k=0;
+   for(k=0;k<a;k++)
+   {
+             for(i=0;i<a;i++)
+        {
+            for(j=0;j<a;j++)
+            {
+               if(m[k][j]+m[i][k]<m[i][j])
+               {
+                   m[i][j]=m[k][j]+m[i][k];
+               }
+            }
+        }
+   }
+   cout<<m[inicio-1][fin-1]<<endl;
+
+
+    return 0;
+}
